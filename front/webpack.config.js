@@ -9,6 +9,9 @@ module.exports = {
     path: path.join(__dirname, "build"),
     filename: "bundle.js"
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
@@ -44,8 +47,5 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new webpack.DefinePlugin({
-      'process.env.API_KEY': `"${process.env.API_KEY}"`
-    })
   ]
 };
