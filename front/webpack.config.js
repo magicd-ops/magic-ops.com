@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', path.join(__dirname, "src", "index.js")],
@@ -39,6 +40,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(), // it will clear dist folder when build project with webpack
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: path.join(__dirname, "src", "index.html")
