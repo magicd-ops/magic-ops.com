@@ -63,7 +63,7 @@ function IconMenu({classes}){
 function ImageMenu({classes}){
     return (
         <div>
-            <img className={classes.logoImage} src="/src/img/logo.jpg" />
+            <img className={classes.logoImage} src="./assets/images/logo.jpg" />
         </div>
     )
 }
@@ -87,7 +87,7 @@ function HeaderImage(){
                         You can follow my projects here
                     </Typography>
                     <div className={classes.centerText}>
-                        <a href="https://github.com/datomegasherly" target="_blank"><img src="src/img/github.png" width="180" /></a>
+                        <a href="https://github.com/datomegasherly" target="_blank"><img src="./assets/images/github.png" width="180" /></a>
                     </div>
                 </div>
             </CardContent>

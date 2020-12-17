@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', path.join(__dirname, "src", "index.js")],
@@ -27,12 +28,13 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
-        test: /.(jpg|jpeg|png|gif|mp3|svg)$/,
+        test: /.(jpg|jpeg|png|gif|svg)$/,
         use: [
           {
             loader: "file-loader",
             options: {
-              name: "[path][name]-[hash:8].[ext]"
+              name: "[name].[ext]",
+              outputPath: "/img"
             }
           }
         ]
@@ -46,8 +48,13 @@ module.exports = {
       template: path.join(__dirname, "src", "index.html")
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: "[name].[hash:8].css",
+      chunkFilename: "[id].[hash:8].css"
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./assets/images", to: "./assets/images" },
+      ],
     }),
   ]
 };
